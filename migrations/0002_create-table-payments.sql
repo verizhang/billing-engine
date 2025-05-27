@@ -12,3 +12,4 @@ CREATE TABLE payments(
     updated_by INTEGER DEFAULT NULL,
     deleted_by INTEGER DEFAULT NULL
 )
+CREATE INDEX IDX_loan_id_start_at ON payments(loan_id, start_at);

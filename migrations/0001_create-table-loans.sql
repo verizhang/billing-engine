@@ -10,4 +10,5 @@ CREATE TABLE loans(
     created_by VARCHAR(50) DEFAULT NULL,
     updated_by VARCHAR(50) DEFAULT NULL,
     deleted_by VARCHAR(50) DEFAULT NULL
-)
+);
+CREATE INDEX IDX_user_id_is_active ON loans(user_id, is_active);

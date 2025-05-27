@@ -1,0 +1,7 @@
+# .mockery.yaml
+with-expecter: true
+inpackage: true
+keeptree: true
+dir: .
+output: ./mocks
+all: true

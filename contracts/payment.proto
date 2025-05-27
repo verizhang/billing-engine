@@ -1,0 +1,19 @@
+syntax = "proto3";
+package loan;
+// import
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+option go_package = "./grpc/generated/pb;paymentpb";
+
+service payment{
+  rpc MakePayment(MakePaymentRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      post: "/payment",
+      body: "*"
+    };
+  }
+}
+
+message MakePaymentRequest {
+  string userId = 1;
+}

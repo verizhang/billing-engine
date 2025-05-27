@@ -1,0 +1,48 @@
+syntax = "proto3";
+package loan;
+// import
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+option go_package = "./grpc/generated/pb;loanpb";
+
+service loan{
+  rpc CreateLoan(CreateLoanRequest) returns (google.protobuf.Empty) {
+    option(google.api.http) = {
+      post: "/loan",
+      body: "*"
+    };
+  }
+
+  rpc GetOutstanding(GetOutstandingRequest) returns(GetOutstandingResponse) {
+    option(google.api.http) = {
+      get: "/loan/outstanding",
+    };
+  }
+
+  rpc IsDelinquent(GetIsDelinquentRequest) returns(GetIsDelinquentResponse) {
+    option(google.api.http) = {
+      get: "/loan/is-delinquent",
+    };
+  }
+}
+
+message CreateLoanRequest {
+  string userId = 1;
+}
+
+message GetOutstandingRequest {
+  string userId = 1;
+}
+
+message GetOutstandingResponse {
+  float outstanding = 1;
+}
+
+message GetIsDelinquentRequest {
+  string userId = 1;
+}
+
+message GetIsDelinquentResponse {
+  bool isDelinquent = 1;
+}
+
